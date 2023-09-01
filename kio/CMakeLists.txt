@@ -1,4 +1,4 @@
-include_directories(${CMAKE_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_LIST_DIR}/..)
 add_definitions(-DTRANSLATION_DOMAIN="kdeconnect-kio")
 
 set(kio_kdeconnect_PART_SRCS

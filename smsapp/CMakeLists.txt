@@ -12,7 +12,7 @@ set_target_properties(kdeconnectsmshelper PROPERTIES
 )
 
 generate_export_header(kdeconnectsmshelper EXPORT_FILE_NAME ${CMAKE_CURRENT_BINARY_DIR}/kdeconnectsms_export.h BASE_NAME KDEConnectSmsAppLib)
-target_include_directories(kdeconnectsmshelper PUBLIC ${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(kdeconnectsmshelper PUBLIC ${CMAKE_CURRENT_LIST_DIR}/.. ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 
 target_link_libraries(kdeconnectsmshelper
 PUBLIC

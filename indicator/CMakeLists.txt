@@ -23,7 +23,7 @@ else ()
 endif()
 
 add_executable(kdeconnect-indicator ${indicator_SRCS})
-target_include_directories(kdeconnect-indicator PUBLIC ${CMAKE_BINARY_DIR})
+target_include_directories(kdeconnect-indicator PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/..)
 target_link_libraries(kdeconnect-indicator Qt5::Widgets KF5::CoreAddons KF5::I18n KF5::Notifications KF5::DBusAddons KF5::KCMUtils kdeconnectinterfaces kdeconnectcore)
 if (WIN32)
     add_compile_definitions(QSYSTRAY)

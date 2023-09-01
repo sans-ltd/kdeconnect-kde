@@ -2,8 +2,9 @@ add_definitions(-DTRANSLATION_DOMAIN="kdeconnect-kcm")
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}
                     ${CMAKE_CURRENT_SOURCE_DIR}
-                    ${CMAKE_SOURCE_DIR}
-                    ${CMAKE_BINARY_DIR})
+                    ${CMAKE_CURRENT_LIST_DIR}/..
+                    ${CMAKE_BINARY_DIR}
+                    ${CMAKE_CURRENT_BINARY_DIR}/..)
 
 set(kcm_SRCS
     kcm.cpp
