@@ -1,3 +1,5 @@
+
+
 /**
  * Copyright 2014 Samoilenko Yuri <kinnalru@gmail.com>
  * Copyright 2016 David Kahles <david.kahles96@gmail.com>
@@ -18,7 +20,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
 import QtQml 2.2
 import org.kde.kdeconnect 1.0
 
@@ -38,23 +39,37 @@ QtObject {
 
     Component.onCompleted: pluginsChanged()
 
+    onPluginNameChanged: pluginsChanged()
+    onDeviceChanged: pluginsChanged()
+
     readonly property var v: DBusAsyncResponse {
         id: availableResponse
         autoDelete: false
-        onSuccess: { root.available = result; }
-        onError: { root.available = false }
+        onSuccess: {
+            root.available = result
+        }
+        onError: {
+            root.available = false
+        }
     }
 
     function pluginsChanged() {
-        availableResponse.setPendingCall(device.hasPlugin("kdeconnect_" + pluginName))
-        iconResponse.setPendingCall(device.pluginIconName("kdeconnect_" + pluginName))
-
+        if (pluginName !== "" && device) {
+            availableResponse.setPendingCall(device.hasPlugin(
+                                                 "kdeconnect_" + pluginName))
+            iconResponse.setPendingCall(device.pluginIconName(
+                                            "kdeconnect_" + pluginName))
+        }
     }
 
     readonly property var vv: DBusAsyncResponse {
         id: iconResponse
         autoDelete: false
-        onSuccess: { root.iconName = result; }
-        onError: { root.iconName = "" }
+        onSuccess: {
+            root.iconName = result
+        }
+        onError: {
+            root.iconName = ""
+        }
     }
 }
